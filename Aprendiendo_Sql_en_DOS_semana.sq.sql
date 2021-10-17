@@ -1,5 +1,5 @@
--- si la tabla existe la elimina
-if object_id('agenda') is not null
+--2 - Crear una tabla (create table - sp_tables - sp_columns - drop table)
+ if object_id('agenda') is not null
   drop table agenda;
 
   --creando una tabla
@@ -35,9 +35,9 @@ if object_id('agenda') is not null
  drop table agenda;
 
 
- ---------------------------------------------------------------------------------------------------------
 
- if object_id('agenda') is not null
+--3 - Insertar y recuperar registros de una tabla (insert into - select)
+if object_id('agenda') is not null
   drop table agenda;
 
  create table agenda(
@@ -65,13 +65,13 @@ if object_id('agenda') is not null
  drop table agenda;
 
  drop table agenda;
-
- ----------------------------------------------------------------------
+ 
+  --4 -Tipos de datos básicos
 
  if object_id('peliculas')is not null
   drop table peliculas;
 
- create table peliculas(
+  create table peliculas(
   nombre varchar(20),
   actor varchar(20),
   duracion integer,
@@ -94,12 +94,12 @@ if object_id('agenda') is not null
 
  select * from peliculas;
 
- -----------------------------------------------------------------------
+ --5 -Recuperar algunos campos (select)
 
  if object_id('peliculas') is not null
   drop table peliculas;
 
- create table peliculas(
+  create table peliculas(
   titulo varchar(20),
   actor varchar(20),
   duracion integer,
@@ -125,7 +125,7 @@ if object_id('agenda') is not null
  select titulo,duracion from peliculas;
 
  select titulo,cantidad from peliculas;
- -----------------------------------------------------------------
+ --6 -Recuperar algunos registros (where)
 
  if object_id('agenda') is not null
   drop table agenda;
@@ -163,7 +163,7 @@ if object_id('agenda') is not null
  select nombre from agenda
   where telefono='4545454';
 
-  --------------------------------------------------------------------------
+  --7 -Operadores relacionales
 
 if object_id('articulos') is not null
   drop table articulos;
@@ -234,7 +234,7 @@ if object_id('articulos') is not null
   from peliculas
   where cantidad >2;
 
-  ----------------------------------------------------------------------------
+  --8 -Borrar registros (delete)
 
   if object_id('agenda') is not null
   drop table agenda;
@@ -310,7 +310,7 @@ if object_id('articulos') is not null
 
  select * from articulos;
 
- -----------------------------------------------------------------------------
+ --9 -Actualizar registros (update)
 
  if object_id('agenda') is not null
   drop table agenda;
@@ -395,7 +395,7 @@ if object_id('articulos') is not null
 
  select * from libros;
 
- ------------------------------------------------------------------------------
+  --11 -Valores null (is null)
 
 
  if object_id('medicamentos') is not null
@@ -502,7 +502,7 @@ if object_id('articulos') is not null
 
  select * from peliculas;
 
- ---------------------------------------------------------------
+ --12 -Clave primaria
 
  if object_id('libros') is not null
   drop table libros;
@@ -565,7 +565,7 @@ if object_id('articulos') is not null
 
  insert into alumnos (legajo,documento,nombre,domicilio)
   values('A685',null,'Miranda Carmen','Uspallata 999');
-  --------------------------------------------------------------------
+  --13 -Campo con atributo Identity
 
 
   if object_id('medicamentos') is not null
@@ -643,7 +643,7 @@ if object_id('peliculas') is not null
 
  select * from peliculas;
 
- -----------------------------------------------------------------------
+ --14 -Otras características del atributo Identity
  if object_id('medicamentos') is not null
   drop table medicamentos;
 
@@ -718,7 +718,7 @@ if object_id('peliculas') is not null
   values('Elsa y Fred','China Zorrilla',90);
 
  select * from peliculas;
- ------------------------------------------------------------------------
+ --15 -Truncate table
 
  if object_id('alumnos') is not null
   drop table alumnos;
@@ -799,87 +799,7 @@ if object_id('peliculas') is not null
  insert into articulos (nombre, descripcion, precio)
   values ('teclado','español Biswal',90);
  select * from articulos;
- ---------------------------------------------------------------------
-
- if object_id('alumnos') is not null
-  drop table alumnos;
-
- create table alumnos(
-  legajo int identity,
-  documento varchar(8),
-  nombre varchar(30),
-  domicilio varchar(30)
- );
-
- insert into alumnos (documento,nombre,domicilio)
-  values('22345345','Perez Mariana','Colon 234');
- insert into alumnos (documento,nombre,domicilio)
-  values('23545345','Morales Marcos','Avellaneda 348');
- insert into alumnos (documento,nombre,domicilio)
-  values('24356345','Gonzalez Analia','Caseros 444');
- insert into alumnos (documento,nombre,domicilio)
-  values('25666777','Torres Ramiro','Dinamarca 209');
-
- delete from alumnos;
-
- insert into alumnos (documento,nombre,domicilio)
-  values('22345345','Perez Mariana','Colon 234');
- insert into alumnos (documento,nombre,domicilio)
-  values('23545345','Morales Marcos','Avellaneda 348');
- insert into alumnos (documento,nombre,domicilio)
-  values('24356345','Gonzalez Analia','Caseros 444');
- insert into alumnos (documento,nombre,domicilio)
-  values('25666777','Torres Ramiro','Dinamarca 209');
- select * from alumnos;
-
- truncate table alumnos;
-
- insert into alumnos (documento,nombre,domicilio)
-  values('22345345','Perez Mariana','Colon 234');
- insert into alumnos (documento,nombre,domicilio)
-  values('23545345','Morales Marcos','Avellaneda 348');
- insert into alumnos (documento,nombre,domicilio)
-  values('24356345','Gonzalez Analia','Caseros 444');
- insert into alumnos (documento,nombre,domicilio)
-  values('25666777','Torres Ramiro','Dinamarca 209');
- select * from alumnos;
-
- --SEGUNDO PROBLEMA
- if object_id('articulos') is not null
-  drop table articulos;
-
- create table articulos(
-  codigo integer identity,
-  nombre varchar(20),
-  descripcion varchar(30),
-  precio float
- );
-
- insert into articulos (nombre, descripcion, precio)
-  values ('impresora','Epson Stylus C45',400.80);
- insert into articulos (nombre, descripcion, precio)
-  values ('impresora','Epson Stylus C85',500);
-
- truncate table articulos;
-
- insert into articulos (nombre, descripcion, precio)
-  values ('monitor','Samsung 14',800);
- insert into articulos (nombre, descripcion, precio)
-  values ('teclado','ingles Biswal',100);
- insert into articulos (nombre, descripcion, precio)
-  values ('teclado','español Biswal',90);
- select * from articulos;
-
- delete from articulos;
-
- insert into articulos (nombre, descripcion, precio)
-  values ('monitor','Samsung 14',800);
- insert into articulos (nombre, descripcion, precio)
-  values ('teclado','ingles Biswal',100);
- insert into articulos (nombre, descripcion, precio)
-  values ('teclado','español Biswal',90);
- select * from articulos;
- ----------------------------------------------------------------
+ --17 -Tipo de dato (texto)
 
  if object_id('autos') is not null
   drop table autos;
@@ -908,7 +828,7 @@ if object_id('peliculas') is not null
  select * from autos
   where modelo='1990';
 
-  --SEGUNDO PROBLEMA
+ --SEGUNDO PROBLEMA
   if object_id('clientes') is not null
   drop table clientes;
 
@@ -931,9 +851,9 @@ if object_id('peliculas') is not null
 
  select * from clientes
   where apellido='Perez';
-  ---------------------------------------------------------------------------------
+ --18 -Tipo de dato (numérico)
 
-  if object_id('cuentas') is not null
+if object_id('cuentas') is not null
   drop table cuentas;
 
  create table cuentas(
@@ -964,9 +884,8 @@ if object_id('peliculas') is not null
 
  select * from cuentas
   where numero>=3000;
-
   --SEGUNDO PROBLEMA
-  if object_id('empleados') is not null
+ if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -996,8 +915,9 @@ if object_id('peliculas') is not null
 
  select * from empleados
   where cantidadhijos>0;
-  -------------------------------------------------------------------------------------------
-  if object_id('alumnos') is not null
+  --19 -Tipo de dato (fecha y hora)
+
+ if object_id('alumnos') is not null
   drop table alumnos;
 
  create table alumnos(
@@ -1029,9 +949,10 @@ if object_id('peliculas') is not null
 
  insert into alumnos values('Lopez','Carlos','27777777','Sarmiento 1254','03-15-1990',null);
 
+  
+  --20 -Ingresar algunos campos (insert into)
 
--------------------------------------------------------------------------------------------------------------------
-if object_id('cuentas') is not null
+   if object_id('cuentas') is not null
   drop table cuentas;
 
  create table cuentas(
@@ -1060,8 +981,8 @@ if object_id('cuentas') is not null
   values ('Luis Lopez',34000);
 
  select * from libros;
- -------------------------------------------------------------------------------
 
+ --21 -Valores por defecto (default)
  if object_id('visitantes') is not null
   drop table visitantes;
 
@@ -1090,9 +1011,8 @@ if object_id('cuentas') is not null
  insert into visitantes default values;
 
  select * from visitantes;
-
- --SEGUNDO PROBLEMA
- if object_id('prestamos') is not null
+ --segundo problema
+  if object_id('prestamos') is not null
   drop table prestamos;
 
  create table prestamos(
@@ -1120,9 +1040,9 @@ if object_id('cuentas') is not null
  select * from prestamos;
 
  insert into prestamos default values;
- -----------------------------------------------------------------------------------
-
- if object_id ('articulos') is not null
+ 
+--22 - Columnas calculadas (operadores aritméticos y de concatenación)
+if object_id ('articulos') is not null
   drop table articulos;
 
  create table articulos(
@@ -1154,9 +1074,9 @@ if object_id('cuentas') is not null
  where nombre='teclado';
 
  select * from articulos;
- ---------------------------------------------------------------------------------
-
- if object_id ('libros') is not null
+ 
+--23 - Alias
+if object_id ('libros') is not null
   drop table libros;
 
  create table libros(
@@ -1188,8 +1108,8 @@ if object_id('cuentas') is not null
 
  select titulo+'-'+autor as "Título y autor"
   from libros;
-  -----------------------------------------------------------------------------
 
+  --27 - Funciones para el uso de fechas y horas
   if object_id ('empleados') is not null
   drop table empleados;
 
@@ -1219,10 +1139,10 @@ if object_id('cuentas') is not null
   where datename(month,fechanacimiento)='october';
 
  select nombre,apellido from empleados
-  where datepart(year,fechaingreso)=2000; 
-  -----------------------------------------------------------------------------------
+  where datepart(year,fechaingreso)=2000;  
 
-  if object_id('visitas') is not null
+  --28 - Ordenar registros (order by)
+   if object_id('visitas') is not null
   drop table visitas;
 
  create table visitas (
@@ -1267,8 +1187,9 @@ if object_id('cuentas') is not null
   from visitas
   where datename(month,fecha)='October'
   order by 2;
-  -----------------------------------------------------------------------------------------
-  if object_id('medicamentos') is not null
+   
+--29 - Operadores lógicos ( and - or - not)
+ if object_id('medicamentos') is not null
   drop table medicamentos;
 
  create table medicamentos(
@@ -1321,10 +1242,8 @@ if object_id('cuentas') is not null
  delete from medicamentos
   where laboratorio='Bayer' or
   precio<3;
-
-
-  --SEGUNDO PROBLEMA
-  if object_id('peliculas') is not null
+  --segundo prblema
+   if object_id('peliculas') is not null
   drop table peliculas;
 
  create table peliculas(
@@ -1367,9 +1286,10 @@ if object_id('cuentas') is not null
  delete from peliculas
   where not actor='Tom Cruise' and
   duracion<=100;
-  ---------------------------------------------------------------------------------------
 
-  if object_id('vehiculos') is not null
+  
+--54 - Crear y asociar reglas (create rule - sp_bindrule)
+ if object_id('vehiculos') is not null
   drop table vehiculos;
 
  if object_id ('RG_patente_patron') is not null
@@ -1449,8 +1369,8 @@ if object_id('cuentas') is not null
 
  exec sp_helpconstraint vehiculos;
 
- ------------------------------------------------------------------------------------------------------
-
+ 
+--55 - Eliminar y dasasociar reglas (sp_unbindrule - drop rule)
  if object_id('vehiculos') is not null
   drop table vehiculos;
 
@@ -1504,7 +1424,9 @@ if object_id('cuentas') is not null
  drop rule RG_patente_patron;
 
  exec sp_help;
- ----------------------------------------------------------------------------------------------
+
+ 
+--32 - Otros operadores relacionales (in)
  if object_id('medicamentos') is not null
   drop table medicamentos;
 
@@ -1539,9 +1461,11 @@ if object_id('cuentas') is not null
 
  select * from medicamentos
   where cantidad in (1,2,3,4,5);
-  ----------------------------------------------------------------------------
 
-  if object_id ('clientes') is not null
+
+  
+--57 - Valores predeterminados (create default)
+if object_id ('clientes') is not null
   drop table clientes;
 
  if object_id ('VP_legajo_patron') is not null
@@ -1604,8 +1528,9 @@ if object_id('cuentas') is not null
  exec sp_bindrule RG_legajo,'clientes.legajo';
 
  insert into clientes values (default,'Luis Garcia','Colon 876','Cordoba','Cordoba','2001-10-10');
- ----------------------------------------------------------------------------------------------------
 
+ 
+--58 - Desasociar y eliminar valores predeterminados
  if object_id ('libros') is not null
   drop table libros;
 
@@ -1673,8 +1598,9 @@ if object_id('cuentas') is not null
  drop default VP_cero;
 
  exec sp_help VP_cero;
- -----------------------------------------------------------------------------
 
+ 
+--40 - Modificador del group by (with cube)
  if object_id('ventas') is not null
   drop table ventas;
 
@@ -1714,9 +1640,72 @@ if object_id('cuentas') is not null
   from ventas
   group by vendedor,tipopago
   with cube;
-  ---------------------------------------------------------------------------
+  --segundo problema
+   if object_id('visitantes') is not null
+  drop table visitantes;
 
-  if object_id('empleados') is not null
+ create table visitantes(
+  nombre varchar(30),
+  edad tinyint,
+  sexo char(1),
+  domicilio varchar(30),
+  ciudad varchar(20),
+  mail varchar(30) default 'no tiene',
+  montocompra decimal(6,2)
+ );
+
+ insert into visitantes
+  values ('Susana Molina',28,'f',null,'Cordoba',null,45.50); 
+ insert into visitantes
+  values ('Marcela Mercado',36,'f','Avellaneda 345','Cordoba',default,22.40);
+ insert into visitantes
+  values ('Alberto Garcia',35,'m',default,'Alta Gracia','albertogarcia@hotmail.com',25); 
+ insert into visitantes
+  values ('Teresa Garcia',33,'f',default,'Alta Gracia',default,120);
+ insert into visitantes
+  values ('Roberto Perez',45,'m',null,'Cordoba','robertoperez@xaxamail.com',33.20);
+ insert into visitantes
+  values ('Marina Torres',22,'f',null,'Villa Dolores',default,95);
+ insert into visitantes
+  values ('Julieta Gomez',24,'f','San Martin 333','Alta Gracia','julietagomez@gmail.com',53.50);
+ insert into visitantes
+  values ('Roxana Lopez',20,'f','null','Alta Gracia',default,240);
+ insert into visitantes
+  values ('Liliana Garcia',50,'f','Paso 999','Cordoba',default,48);
+ insert into visitantes
+  values ('Juan Torres',43,'m','Sarmiento 876','Cordoba',null,15.30);
+
+ select sexo,ciudad,
+  sum(montocompra) as total
+  from visitantes
+  group by sexo,ciudad
+  with rollup;
+
+ select sexo,ciudad,
+  sum(montocompra) as total
+  from visitantes
+  group by sexo,ciudad
+  with cube;
+
+ select sexo,ciudad,
+  avg(edad) as 'edad promedio'
+  from visitantes
+  where mail is not null and
+  mail <>'no tiene'
+  group by sexo,ciudad
+  with rollup;
+
+ select sexo,ciudad,
+  avg(edad) as 'edad promedio'
+  from visitantes
+  where mail is not null and
+  mail <>'no tiene'
+  group by sexo,ciudad
+  with cube;
+
+  
+--41 - Función grouping
+ if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados (
@@ -1766,10 +1755,10 @@ if object_id('cuentas') is not null
   from empleados
   group by sexo,estadocivil
   with cube;
-  ------------------------------------------------------------------------------------
 
-
-  if object_id('inmuebles') is not null
+  
+--42 - Cláusulas compute y compute by
+ if object_id('inmuebles') is not null
   drop table inmuebles;
 
  create table inmuebles (
@@ -1832,10 +1821,9 @@ if object_id('cuentas') is not null
   compute avg(monto)
   by documento;
 
-  --------------------------------------------------------------------------------------------------------
-
-
-  if object_id('alumnos') is not null
+  
+--62 - Creación de índices
+ if object_id('alumnos') is not null
   drop table alumnos;
  create table alumnos(
   legajo char(5) not null,
@@ -1897,8 +1885,9 @@ if object_id('cuentas') is not null
  select name from sysindexes
   where name like 'I_%';
 
-  -----------------------------------------------------------------------------------------------
-  if object_id('alumnos') is not null
+  
+--63 - Regenerar índices
+ if object_id('alumnos') is not null
   drop table alumnos;
  create table alumnos(
   legajo char(5) not null,
@@ -1963,9 +1952,9 @@ if object_id('cuentas') is not null
   with drop_existing;
 
  exec sp_helpindex alumnos;
- ----------------------------------------------------------------------------------------
 
-
+ 
+--64 - Eliminar índices
  if object_id('alumnos') is not null
   drop table alumnos;
  create table alumnos(
@@ -2001,9 +1990,11 @@ if object_id('cuentas') is not null
   drop PK_alumnos_legajo;
 
  exec sp_helpindex alumnos;
- ---------------------------------------------------------------------------------
 
- if (object_id('clientes')) is not null
+ 
+--66 - Combinación interna (inner join)
+
+if (object_id('clientes')) is not null
    drop table clientes;
   if (object_id('provincias')) is not null
    drop table provincias;
@@ -2051,10 +2042,9 @@ if object_id('cuentas') is not null
   join provincias as p
   on c.codigoprovincia=p.codigo
   where p.nombre='Santa Fe';
+  --segundo problema
 
-
-  --SEGUNDOPROBLEMA
-  if (object_id('inscriptos')) is not null
+   if (object_id('inscriptos')) is not null
   drop table inscriptos;
  if (object_id('inasistencias')) is not null
   drop table inasistencias;
@@ -2107,9 +2097,11 @@ if object_id('cuentas') is not null
   on insc.documento=ina.documento and
   insc.deporte=ina.deporte
   where insc.matricula='s';
-  ----------------------------------------------------------------------------
 
-  if (object_id('clientes')) is not null
+  
+--67 - Combinación externa izquierda (left join)
+
+if (object_id('clientes')) is not null
    drop table clientes;
   if (object_id('provincias')) is not null
    drop table provincias;
@@ -2169,9 +2161,11 @@ if object_id('cuentas') is not null
   left join provincias as p
   on codigoprovincia = p.codigo
   where p.nombre='Cordoba';
-  ---------------------------------------------------------------------------------
 
-  if object_id('clientes') is not null
+  
+--76 - Restricciones (foreign key)
+
+ if object_id('clientes') is not null
   drop table clientes;
  if object_id('provincias') is not null
   drop table provincias;
@@ -2230,7 +2224,9 @@ if object_id('cuentas') is not null
  exec sp_helpconstraint clientes;
 
  exec sp_helpconstraint provincias;
- ---------------------------------------------------------------------------------
+
+ 
+--77 - Restricciones foreign key en la misma tabla
 
  if object_id('clientes') is not null
   drop table clientes;
@@ -2273,8 +2269,9 @@ if object_id('cuentas') is not null
  update clientes set codigo=180 where codigo=125;
 
  delete from clientes where codigo=110;
- --------------------------------------------------------------------------------------
 
+
+--78 - Restricciones foreign key (acciones)
  if object_id('clientes') is not null
   drop table clientes;
  if object_id('provincias') is not null
@@ -2327,8 +2324,9 @@ if object_id('cuentas') is not null
 
  drop table provincias;
 
- --SEGUNDOPROBLEMA
- if object_id('inscripciones') is not null
+ --segundo problema
+
+  if object_id('inscripciones') is not null
   drop table inscripciones;
  if object_id('deportes') is not null
   drop table deportes;
@@ -2408,9 +2406,11 @@ if object_id('cuentas') is not null
  exec sp_helpconstraint deportes;
 
  exec sp_helpconstraint inscripciones;
- -------------------------------------------------------------------------------
 
- if object_id('clientes') is not null
+ 
+--79 - Restricciones foreign key deshabilitar y eliminar (with check - nocheck)
+
+if object_id('clientes') is not null
   drop table clientes;
  if object_id('provincias') is not null
   drop table provincias;
@@ -2503,9 +2503,10 @@ if object_id('cuentas') is not null
  exec sp_helpconstraint provincias;
 
  drop table provincias;
- -----------------------------------------------------------------------------------
 
- if object_id('socios') is not null
+--73 - Combinación de más de dos tablas
+
+if object_id('socios') is not null
   drop table socios;
  if object_id('deportes') is not null
   drop table deportes;
@@ -2575,9 +2576,11 @@ if object_id('cuentas') is not null
   join socios as s
   on s.documento=i.documento
   where s.documento='22222222';
-  --------------------------------------------------------------------------------
 
-  if object_id('inscriptos') is not null
+  
+--81 - Restricciones al crear la tabla
+
+ if object_id('inscriptos') is not null
   drop table inscriptos;
  if object_id('socios') is not null
   drop table socios;
@@ -2694,9 +2697,10 @@ if object_id('cuentas') is not null
  exec sp_helpconstraint profesores;
 
  exec sp_helpconstraint inscriptos;
- ---------------------------------------------------------------------------------------
+ 
+--87 - Tipo de dato definido por el usuario (crear - informacion)
 
- if object_id ('empleados') is not null
+if object_id ('empleados') is not null
   drop table empleados;
 
  if exists (select name from systypes
@@ -2716,8 +2720,8 @@ if object_id('cuentas') is not null
  insert into empleados default values;
 
  insert into empleados values('A111','22222222','Juan Perez');
- -------------------------------------------------------------------------------
-
+ 
+--88 - Tipo de dato definido por el usuario (asociación de reglas)
  if object_id ('empleados') is not null
   drop table empleados;
  if object_id ('clientes') is not null
@@ -2786,9 +2790,10 @@ if object_id('cuentas') is not null
 
  insert into clientes values('44444444','Pedro Perez',-1900);
  select * from clientes;
- --------------------------------------------------------------------------------
 
- if object_id ('empleados') is not null
+ 
+--89 - Tipo de dato definido por el usuario (valores predeterminados)
+if object_id ('empleados') is not null
   drop table empleados;
  if object_id ('clientes') is not null
   drop table clientes;
@@ -2869,7 +2874,9 @@ if object_id('cuentas') is not null
  exec sp_helpconstraint clientes;
 
  exec sp_helpconstraint empleados;
- -----------------------------------------------------------------------
+
+ 
+--90 - Tipo de dato definido por el usuario (eliminar)
 
  if object_id ('empleados') is not null
   drop table empleados;
@@ -2920,9 +2927,9 @@ if object_id('cuentas') is not null
  exec sp_droptype tipo_año;
 
  exec sp_help tipo_año;
- ------------------------------------------------------------------------
 
- if object_id('empleados') is not null
+ --83 - Agregar y eliminar campos ( alter table - add - drop)
+  if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -2961,7 +2968,9 @@ if object_id('cuentas') is not null
   drop column codigo,fechaingreso;
 
  exec sp_columns empleados;
- ---------------------------------------------------------------------------------------
+
+ 
+--92 - Subconsultas como expresión
  if object_id('alumnos') is not null
   drop table alumnos;
 
@@ -3003,9 +3012,12 @@ if object_id('cuentas') is not null
  delete from alumnos
  where nota<
    (select avg(nota) from alumnos);
-   ------------------------------------------------------------------------------------------
 
-   if (object_id('ciudades')) is not null
+
+
+--93 - Subconsultas con in
+
+  if (object_id('ciudades')) is not null
    drop table ciudades;
   if (object_id('clientes')) is not null
    drop table clientes;
@@ -3066,9 +3078,10 @@ if object_id('cuentas') is not null
  select codigociudad
   from clientes
   where nombre like 'G%';
-  --------------------------------------------------------------------------
 
-  if object_id('inscriptos') is not null
+  
+--94 - Subconsultas any - some - all
+ if object_id('inscriptos') is not null
   drop table inscriptos;
  if object_id('socios') is not null
   drop table socios;
@@ -3164,9 +3177,11 @@ if object_id('cuentas') is not null
    (select numerosocio 
     from inscriptos
     where cuotas=0);
-	-------------------------------------------------------------------------
 
-	if object_id('inscriptos') is not null
+	
+--95 - Subconsultas correlacionadas
+
+if object_id('inscriptos') is not null
   drop table inscriptos;
  if object_id('socios') is not null
   drop table socios;
@@ -3233,9 +3248,10 @@ if object_id('cuentas') is not null
   join inscriptos as i
   on numero=numerosocio
   group by nombre;
-  -----------------------------------------------------------------------------------------
 
-  if object_id('deportes') is not null
+
+--97 - Subconsulta simil autocombinación
+ if object_id('deportes') is not null
   drop table deportes;
 
  create table deportes(
@@ -3279,9 +3295,10 @@ if object_id('cuentas') is not null
   on d1.dia=d2.dia
   where d2.nombre='natacion' and
   d1.nombre<>d2.nombre;
-  --------------------------------------------------------------------------------------
 
-  if object_id('inscriptos') is not null
+
+--98 - Subconsulta en lugar de una tabla
+ if object_id('inscriptos') is not null
   drop table inscriptos;
  if object_id('socios') is not null
   drop table socios;
@@ -3343,9 +3360,11 @@ if object_id('cuentas') is not null
 	join inscriptos as i
 	on d.codigo=i.codigodeporte) as td
   on td.documento=s.documento;
-  ------------------------------------------------------------------------------------------------
 
-  if object_id('empleados') is not null
+  
+--122 - Procedimientos almacenados (parámetros de entrada)
+
+ if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -3418,8 +3437,9 @@ if object_id('cuentas') is not null
  exec pa_sueldototal '22666666';
 
  exec pa_sueldototal;
- ------------------------------------------------------------------------------
 
+ 
+--123 - Procedimientos almacenados (parámetros de salida)
  if object_id('empleados') is not null
   drop table empleados;
 
@@ -3498,9 +3518,10 @@ if object_id('cuentas') is not null
  exec pa_sueldototal @sueldototal=@st output
  select @st;
 
- ------------------------------------------------------------------------------------
 
- if object_id('empleados') is not null
+ 
+--124 - Procedimientos almacenados (return)
+if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -3575,8 +3596,9 @@ if object_id('cuentas') is not null
  exec @retorno=pa_actualizarhijos @hijos=4
  if @retorno=1 select 'Registro actualizado'
  else select 'Registro no actualizado, se necesita un documento y la cantidad de hijos';
- ----------------------------------------------------------------------------------------------------
 
+ 
+--107 - Vistas (with check option)
  if object_id('clientes') is not null
   drop table clientes;
  if object_id('ciudades') is not null
@@ -3632,9 +3654,9 @@ if object_id('cuentas') is not null
  select * from clientes;
 
  update vista_clientes set codigociudad=2 where documento='22222222';
- --------------------------------------------------------------------------------------------------
-
-if object_id('visitas') is not null
+ 
+--115 - Tipo de dato text - ntext e image (leer)
+ if object_id('visitas') is not null
   drop table visitas;
 
  create table visitas (
@@ -3672,8 +3694,9 @@ if object_id('visitas') is not null
  if (textvalid('visitas.comentarios', @puntero)=1)
   readtext visitas.comentarios @puntero 0 0
  else select 'puntero invalido';
- -----------------------------------------------------------------------------------------------------------------------
 
+ 
+--116 - Tipo de dato text - ntext e image (escribir)
  if object_id('visitas') is not null
   drop table visitas;
 
@@ -3737,9 +3760,9 @@ if object_id('visitas') is not null
   where nombre='Salvador Quiroga'
  
   readtext visitas.comentarios @puntero 0 0;
-  --------------------------------------------------------------------------------------------------
-
-  if object_id('alumnos') is not null
+  
+--128 - Procedimientos almacenados (insertar)
+ if object_id('alumnos') is not null
   drop table alumnos;
 
  create table alumnos(
@@ -3799,7 +3822,9 @@ if object_id('visitas') is not null
  insert into desaprobados exec pa_desaprobados;
 
  select * from desaprobados;
- ----------------------------------------------------------------------------------
+
+ 
+--110 - Lenguaje de control de flujo (case)
 
  if object_id('empleados') is not null
   drop table empleados;
@@ -3860,9 +3885,9 @@ if object_id('visitas') is not null
   end
   from empleados
   order by sueldototal;
-  -----------------------------------------------------------------------------------
-
-  if object_id('empleados') is not null
+  
+--110 - Lenguaje de control de flujo (case)
+ if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -3921,8 +3946,12 @@ if object_id('visitas') is not null
   end
   from empleados
   order by sueldototal;
-  -------------------------------------------------------------------------------------------------
-  if (object_id('libros')) is not null
+
+  
+--131 - Procedimientos Almacenados (con join)
+
+
+if (object_id('libros')) is not null
   drop table libros;
  if (object_id('ventas')) is not null
   drop table ventas;
@@ -4009,9 +4038,10 @@ if object_id('visitas') is not null
  exec pa_vender 9;
 
  exec pa_vender 5,250;
- -------------------------------------------------------------------------------------
 
- if object_id('consultas') is not null
+ 
+--135 - Funciones escalares (crear y llamar)
+if object_id('consultas') is not null
   drop table consultas;
  if object_id('medicos') is not null
   drop table medicos;
@@ -4132,10 +4162,8 @@ if object_id('visitas') is not null
  declare @valor char(30)
  set @valor='2007/04/09'
  select dbo.f_nombreDia(@valor);
-
-
- --segundoproblema
- if object_id('empleados') is not null
+ --segundo Problema
+  if object_id('empleados') is not null
   drop table empleados;
  create table empleados(
   documento char(8) not null,
@@ -4205,9 +4233,9 @@ if object_id('visitas') is not null
   dbo.f_valorNulo(telefono) as telefono,
   dbo.f_valorNulo(mail) as mail
   from empleados;
-  ----------------------------------------------------------------------------------
-
-  if object_id('empleados') is not null
+  
+--136 - Funciones de tabla de varias instrucciones
+if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -4221,10 +4249,10 @@ if object_id('visitas') is not null
    primary key(documento)
  );
 
- insert into empleados values('22222222','jose','Ana','Avellaneda 123','Cordoba','1970/10/10');
- insert into empleados values('23333333','pedro','Bernardo','Bulnes 234','Cordoba','1972/05/15');
+ insert into empleados values('22222222','Acosta','Ana','Avellaneda 123','Cordoba','1970/10/10');
+ insert into empleados values('23333333','Bustos','Bernardo','Bulnes 234','Cordoba','1972/05/15');
  insert into empleados values('24444444','Caseros','Carlos','Colon 356','Carlos Paz','1980/02/25');
- insert into empleados values('25555555','vargas','Fabiola','Fragueiro 987','Jesus Maria','1984/06/12');
+ insert into empleados values('25555555','Fuentes','Fabiola','Fragueiro 987','Jesus Maria','1984/06/12');
 
  if object_id('f_empleados') is not null
   drop function f_empleados;
@@ -4263,9 +4291,10 @@ end;
 
  select *from dbo.f_empleados('parcial')
   where domicilio='Cordoba';
-  ---------------------------------------------------------------------------------
 
-  if object_id('empleados') is not null
+  
+--136 - Funciones de tabla de varias instrucciones
+if object_id('empleados') is not null
   drop table empleados;
 
  create table empleados(
@@ -4279,10 +4308,10 @@ end;
    primary key(documento)
  );
 
- insert into empleados values('22222222','Acosta','pedro','Avellaneda 123','Cordoba','1970/10/10');
- insert into empleados values('23333333','vasquez','Bmiguel','Bulnes 234','Cordoba','1972/05/15');
- insert into empleados values('24444444','javier','Carlos','Colon 356','Carlos Paz','1980/02/25');
- insert into empleados values('25555555','vargas','Fabiola','Fragueiro 987','Jesus Maria','1984/06/12');
+ insert into empleados values('22222222','Acosta','Ana','Avellaneda 123','Cordoba','1970/10/10');
+ insert into empleados values('23333333','Bustos','Bernardo','Bulnes 234','Cordoba','1972/05/15');
+ insert into empleados values('24444444','Caseros','Carlos','Colon 356','Carlos Paz','1980/02/25');
+ insert into empleados values('25555555','Fuentes','Fabiola','Fragueiro 987','Jesus Maria','1984/06/12');
 
  if object_id('f_empleados') is not null
   drop function f_empleados;
@@ -4321,6 +4350,78 @@ end;
 
  select *from dbo.f_empleados('parcial')
   where domicilio='Cordoba';
+
+
+  
+--136 - Funciones de tabla de varias instrucciones
+
+ if object_id('empleados') is not null
+  drop table empleados;
+
+ create table empleados(
+  documento char(8) not null,
+  apellido varchar(30) not null,
+  nombre varchar(30) not null,
+  domicilio varchar(30),
+  ciudad varchar(30),
+  fechanacimiento datetime,
+  constraint PK_empleados
+   primary key(documento)
+ );
+
+ insert into empleados values('22222222','Acosta','Ana','Avellaneda 123','Cordoba','1970/10/10');
+ insert into empleados values('23333333','Bustos','Bernardo','Bulnes 234','Cordoba','1972/05/15');
+ insert into empleados values('24444444','Caseros','Carlos','Colon 356','Carlos Paz','1980/02/25');
+ insert into empleados values('25555555','Fuentes','Fabiola','Fragueiro 987','Jesus Maria','1984/06/12');
+
+ if object_id('f_empleados') is not null
+  drop function f_empleados;
+
+ create function f_empleados
+ (@opcion varchar(10)
+ )
+ returns @listado table
+ (documento char(8),
+ nombre varchar(60),
+ domicilio varchar(60),
+ nacimiento varchar(12))
+ as 
+ begin
+  if @opcion not in ('total','parcial')
+    set @opcion='parcial'
+  if @opcion='total'
+   insert @listado 
+    select documento,
+    (apellido+' '+nombre),
+    (domicilio+' ('+ciudad+')'), 
+    cast(fechanacimiento as varchar(12))
+     from empleados
+  else
+   insert @listado
+   select documento,apellido,ciudad,cast(datepart(year,fechanacimiento) as char(4))
+   from empleados
+  return
+end;
+
+ select *from dbo.f_empleados('total');
+
+ select *from dbo.f_empleados();
+
+ select *from dbo.f_empleados('');
+
+ select *from dbo.f_empleados('parcial')
+  where domicilio='Cordoba';
+
+
+
+
+
+
+
+
+
+
+
 
 
 
